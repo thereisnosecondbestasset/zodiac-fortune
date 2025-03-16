@@ -1,4 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 오늘 날짜를 기반으로 고유 키 생성
+  function getTodayKey() {
+    const today = new Date();
+    return `fortune_${today.getFullYear()}_${today.getMonth()}_${today.getDate()}`;
+  }
+
+  // 7일 지난 운세 데이터 삭제
+  function cleanOldFortunes() {
+    const today = new Date();
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith("fortune_")) {
+        const [_, year, month, day] = key.split("_");
+        const storedDate = new Date(parseInt(year), parseInt(month), parseInt(day));
+        if ((today - storedDate) / (1000 * 60 * 60 * 24) > 7) {
+          localStorage.removeItem(key);
+        }
+      }
+    }
+  }
+  cleanOldFortunes(); // 페이지 로드 시 실행
+
   // 현재 날짜 표시
   const currentDateElement = document.getElementById("current-date");
   const today = new Date();
@@ -45,6 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   updateVisitorCount();
 
+  // 부드럽게 화면 위로 스크롤하는 함수
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
   // fortune-sentences.json 파일 로드
   fetch("fortune-sentences.json")
     .then(response => {
@@ -88,10 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
               console.error(`이미지 로드 실패: ${zodiac.image}`);
               image.src = "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/rat.png?v=1741923522857";
             };
-            // 이미지 클릭 시 운세 표시 추가
             image.addEventListener("click", () => {
               showFortune(zodiac);
-              scrollToTop(); // 화면 위로 스크롤
+              scrollToTop();
             });
             item.appendChild(image);
 
@@ -100,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
             button.textContent = zodiac.name;
             button.addEventListener("click", () => {
               showFortune(zodiac);
-              scrollToTop(); // 화면 위로 스크롤
+              scrollToTop();
             });
             item.appendChild(button);
 
@@ -113,13 +142,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const resultGeneralFortune = document.getElementById("zodiac-general-fortune");
             const yearlyList = document.getElementById("zodiac-yearly-fortune");
 
-            // 종합 운세 (default에서 랜덤)
-            const generalFortune = getRandomUniqueFortunes(fortuneSentences.general.default, 1)[0];
+            const todayKey = getTodayKey();
+            const fortuneKey = `${todayKey}_${zodiac.name}`;
+            let storedFortune = JSON.parse(localStorage.getItem(fortuneKey));
 
-            // 나이별 운세 (띠별 general에서 중복 없이 랜덤)
-            const zodiacFortunes = fortuneSentences.general[zodiac.name] || fortuneSentences.general.default;
-            const yearCount = Object.keys(zodiac.yearlyFortunes).length;
-            const uniqueFortunes = getRandomUniqueFortunes(zodiacFortunes, yearCount);
+            if (!storedFortune) {
+              const generalFortune = getRandomUniqueFortunes(fortuneSentences.general.default, 1)[0];
+              const zodiacFortunes = fortuneSentences.general[zodiac.name] || fortuneSentences.general.default;
+              const yearCount = Object.keys(zodiac.yearlyFortunes).length;
+              const uniqueFortunes = getRandomUniqueFortunes(zodiacFortunes, yearCount);
+
+              storedFortune = {
+                general: generalFortune,
+                yearly: uniqueFortunes
+              };
+              localStorage.setItem(fortuneKey, JSON.stringify(storedFortune));
+            }
 
             resultImage.src = zodiac.image;
             resultImage.alt = `${zodiac.name} 이미지`;
@@ -128,27 +166,18 @@ document.addEventListener("DOMContentLoaded", () => {
               resultImage.src = "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/rat.png?v=1741923522857";
             };
             resultName.textContent = zodiac.name;
-            resultGeneralFortune.textContent = generalFortune;
+            resultGeneralFortune.textContent = storedFortune.general;
             yearlyList.innerHTML = "";
 
-            // 나이별 운세 표시
             let i = 0;
             for (const [year] of Object.entries(zodiac.yearlyFortunes)) {
-              const fortune = uniqueFortunes[i] || "추가 운세를 준비 중이에요!";
+              const fortune = storedFortune.yearly[i] || "추가 운세를 준비 중이에요!";
               const li = document.createElement("li");
               const emoji = zodiacEmojis[zodiac.name] || "";
               li.textContent = `${emoji}${year}년생: ${fortune}`;
               yearlyList.appendChild(li);
               i++;
             }
-          }
-
-          // 부드럽게 화면 위로 스크롤하는 함수
-          function scrollToTop() {
-            window.scrollTo({
-              top: 0,
-              behavior: "smooth" // 부드러운 애니메이션
-            });
           }
         })
         .catch(error => {
