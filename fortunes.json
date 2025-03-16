@@ -1,0 +1,146 @@
+[
+  {
+    "name": "쥐띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/rat.png?v=1742002796731",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1948": "",
+      "1960": "",
+      "1972": "",
+      "1984": "",
+      "1996": ""
+    }
+  },
+  {
+    "name": "소띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/cow.png?v=1742002778381",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1949": "",
+      "1961": "",
+      "1973": "",
+      "1985": "",
+      "1997": ""
+    }
+  },
+  {
+    "name": "호랑이띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/tiger.png?v=1742002800877",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1950": "",
+      "1962": "",
+      "1974": "",
+      "1986": "",
+      "1998": ""
+    }
+  },
+  {
+    "name": "토끼띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/rabbit.png?v=1742002796146",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1951": "",
+      "1963": "",
+      "1975": "",
+      "1987": "",
+      "1999": ""
+    }
+  },
+  {
+    "name": "용띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/dragon.png?v=1742002777086",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1952": "",
+      "1964": "",
+      "1976": "",
+      "1988": "",
+      "2000": ""
+    }
+  },
+  {
+    "name": "뱀띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/snake.png?v=1742002798225",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1953": "",
+      "1965": "",
+      "1977": "",
+      "1989": "",
+      "2001": ""
+    }
+  },
+  {
+    "name": "말띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/horse.png?v=1742002780740",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1954": "",
+      "1966": "",
+      "1978": "",
+      "1990": "",
+      "2002": ""
+    }
+  },
+  {
+    "name": "양띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/lamb.png?v=1742002782397",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1955": "",
+      "1967": "",
+      "1979": "",
+      "1991": "",
+      "2003": ""
+    }
+  },
+  {
+    "name": "원숭이띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/monkey.png?v=1742002787318",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1956": "",
+      "1968": "",
+      "1980": "",
+      "1992": "",
+      "2004": ""
+    }
+  },
+  {
+    "name": "닭띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/hen.png?v=1742002779039",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1957": "",
+      "1969": "",
+      "1981": "",
+      "1993": "",
+      "2005": ""
+    }
+  },
+  {
+    "name": "개띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/dog.png?v=1742002774571",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1958": "",
+      "1970": "",
+      "1982": "",
+      "1994": "",
+      "2006": ""
+    }
+  },
+  {
+    "name": "돼지띠",
+    "image": "https://cdn.glitch.global/a53c5bda-aadc-4998-8d4e-093532654a8e/pig.png?v=1742002790259",
+    "generalFortune": "",
+    "yearlyFortunes": {
+      "1959": "",
+      "1971": "",
+      "1983": "",
+      "1995": "",
+      "2007": ""
+    }
+  }
+]
